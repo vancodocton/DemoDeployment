@@ -59,7 +59,7 @@ jobs:
         with:
           token: ${{ github.token }}
           environment: "production"
-          ref: github.ref
+          ref: ${{ github.ref }}
           onlyRemoveDeployments: true
           
   deploy:
