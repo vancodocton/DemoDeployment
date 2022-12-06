@@ -59,7 +59,8 @@ jobs:
         with:
           token: ${{ github.token }}
           environment: "production"
-          onlyDeactivateDeployments: true
+          # onlyDeactivateDeployments: true
+          onlyRemoveDeployments: true
           
   deploy:
     # The type of runner that the job will run on
