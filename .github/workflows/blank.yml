@@ -55,10 +55,17 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Check if it is able to deploy.
+      - uses: strumwolf/delete-deployment-environment@v2
+        with:
+          token: ${{ github.token }}
+          environment: "production"
+          ref: ${{ github.ref }}
+          onlyRemoveDeployments: true
+          
   deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    if: github.event.name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment: 
       name: "production"
     needs: ["check_deploy"]
